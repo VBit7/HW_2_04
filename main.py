@@ -76,7 +76,8 @@ def save_data_from_form(data):
         try:
             with open('storage/data.json', 'r', encoding='utf-8') as file:
                 existing_data = json.load(file)
-        except (FileNotFoundError, json.JSONDecodeError):
+        except (FileNotFoundError, json.JSONDecodeError) as err:
+            logging.error(err)
             existing_data = {}
 
         existing_data.update(new_data)
